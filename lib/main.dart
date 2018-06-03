@@ -7,11 +7,11 @@ class FreshAir extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'FreshAir',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: new StartPage(title: 'Flutter Demo Home Page'),
+      home: new StartPage(),
     );
   }
 }

@@ -8,8 +8,7 @@ import 'Show.dart';
 import 'ShowPreview.dart';
 
 class StartPage extends StatefulWidget {
-  StartPage({Key key, this.title}) : super(key: key);
-  final String title;
+  StartPage({Key key}) : super(key: key);
 
   @override
   _StartPageState createState() => new _StartPageState();
@@ -17,20 +16,21 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   Widget body;
+  String header = "Streaming Now";
 
   @override
   Widget build(BuildContext context) {
-    WebsiteAPI.getAllShows();
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        centerTitle: true,
+        title: new Text(header),
       ),
-      drawer: Drawer(
+      drawer: new Drawer(
         child: new ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             new DrawerHeader(
-              child: new Text('Fresh Air'),
+              child: new Center(child: new Text("Fresh Air")),
               decoration: new BoxDecoration(
                 color: Colors.green,
               ),
@@ -39,6 +39,9 @@ class _StartPageState extends State<StartPage> {
               title: new Text('Streaming Now'),
               onTap: () {
                 setState(() {
+                  if (header != "Streaming Now") {
+                    header = "Streaming Now";
+                  }
                   body = StreamingNowPage();
                 });
                 Navigator.pop(context);
@@ -48,6 +51,7 @@ class _StartPageState extends State<StartPage> {
               title: new Text('Shows'),
               onTap: () {
                 setState(() {
+                  header = "Shows";
                   body = new FutureBuilder<List<ShowData>>(
                     future: WebsiteAPI.getAllShows(),
                     builder: (context, snapshot) {
@@ -55,11 +59,11 @@ class _StartPageState extends State<StartPage> {
                       if (snapshot.hasData) {
                         var list = snapshot.data.map((item) {
                           return new ShowPreview(data: item);
-                        });
-                        return new ShowList(previews: list.toList());
-                      }
-                      else {
-                        return new Center(child: new CircularProgressIndicator());
+                        }).toList();
+                        return new ShowList(previews: list);
+                      } else {
+                        return new Center(
+                            child: new CircularProgressIndicator());
                       }
                     },
                   );
@@ -71,6 +75,7 @@ class _StartPageState extends State<StartPage> {
               title: new Text('Events'),
               onTap: () {
                 setState(() {
+                  header = "Events";
                   body = EventList();
                 });
                 Navigator.pop(context);
@@ -80,6 +85,7 @@ class _StartPageState extends State<StartPage> {
               title: new Text('Contact'),
               onTap: () {
                 setState(() {
+                  header = "Contact";
                   body = ContactPage();
                 });
                 Navigator.pop(context);

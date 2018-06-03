@@ -11,7 +11,9 @@ class _EventListState extends State<EventList> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Text("Events"),
+      body: new Center(
+        child: new Text("Events"),
+      ),
     );
   }
 }
