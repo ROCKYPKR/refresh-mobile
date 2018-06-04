@@ -8,7 +8,9 @@ class ShowData extends Object with _$ShowDataSerializerMixin {
   ShowData(this.slug, this.title, this.tagLine, this.description, this.link,
       this.pic);
 
-  String slug, title, tagLine, description, link, pic;
+  String slug, title, description, link, pic;
+  @JsonKey(name: "tag_line")
+  String tagLine;
 
   factory ShowData.fromJson(Map<String, dynamic> json) =>
       _$ShowDataFromJson(json);
@@ -34,6 +36,7 @@ class _ShowState extends State<Show> {
     tagLine = widget.data.tagLine;
     description = widget.data.description;
     link = widget.data.link;
+    pic = widget.data.pic;
   }
 
   List<Widget> buildList() {
@@ -47,6 +50,18 @@ class _ShowState extends State<Show> {
         ));
       }
     });
+    if (pic == null) {
+      resultList.add(new Container(
+        margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+        child: new Image.asset('assets/freshair_default_show_pic.png'),
+        ));
+    }
+    else{
+      resultList.add(new Container(
+        margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+        child: new Image.network(pic),
+        ));
+    }
     return resultList;
   }
 
