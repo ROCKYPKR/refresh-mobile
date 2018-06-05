@@ -9,23 +9,10 @@ class ShowList extends StatelessWidget {
   Widget build(BuildContext context) {
     return new GridView.builder(
         gridDelegate:
-            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.8),
         itemCount: previews.length,
         itemBuilder: (context, index) {
           return previews[index];
         });
   }
 }
-/*
-class _ShowListState extends State<ShowList> {
-  @override
-  Widget build(BuildContext context) {
-    return new GridView.builder(
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3
-        ),
-        itemCount: widget,
-        itemBuilder:
-    )
-  }
-}*/
