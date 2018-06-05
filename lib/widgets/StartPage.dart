@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'StreamingNowPage.dart';
-import 'ShowList.dart';
-import 'EventList.dart';
-import 'ContactPage.dart';
-import 'WebsiteAPI.dart';
-import 'Show.dart';
-import 'ShowPreview.dart';
+import 'package:fresh_air/widgets/StreamingNowPage.dart';
+import 'package:fresh_air/widgets/ShowList.dart';
+import 'package:fresh_air/widgets/EventList.dart';
+import 'package:fresh_air/widgets/ContactPage.dart';
+import 'package:fresh_air/helpers/WebsiteAPI.dart';
+import 'package:fresh_air/widgets/Show.dart';
+import 'package:fresh_air/widgets/ShowPreview.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);

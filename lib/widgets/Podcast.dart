@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Podcast.g.dart';
+part 'package:fresh_air/widgets/Podcast.g.dart';
 
 
 @JsonSerializable()

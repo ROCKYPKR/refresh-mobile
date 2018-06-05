@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:fresh_air/helpers/WebsiteAPI.dart';
 
-part 'Show.g.dart';
+part 'package:fresh_air/widgets/Show.g.dart';
 
 @JsonSerializable()
 class ShowData extends Object with _$ShowDataSerializerMixin {
@@ -42,34 +43,54 @@ class _ShowState extends State<Show> {
   List<Widget> buildList() {
     List<String> data = [slug, title, tagLine, description, link];
     List<Widget> resultList = [];
+    resultList.add(buildImage());
     data.forEach((item) {
       if (item != null) {
         resultList.add(new Container(
           margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-          child: new Text(item),
+          child: new Text(
+            item,
+            textAlign: TextAlign.center,
+          ),
         ));
       }
     });
+    return resultList;
+  }
+
+  Widget buildImage() {
     if (pic == null) {
-      resultList.add(new Container(
+      return new Container(
         margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
         child: new Image.asset('assets/freshair_default_show_pic.png'),
-        ));
-    }
-    else{
-      resultList.add(new Container(
+      );
+    } else {
+      return new Container(
         margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
         child: new Image.network(pic),
-        ));
+      );
     }
-    return resultList;
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Column(
-          children: buildList(), mainAxisAlignment: MainAxisAlignment.center),
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return new Hero(
+      tag: slug,
+      child: new Scaffold(
+        body: new SingleChildScrollView(
+          child: new ConstrainedBox(
+            constraints: new BoxConstraints(minHeight: height, minWidth: width),
+            child: new Card(
+              elevation: 20.0,
+              child: Column(
+                children: buildList(),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
