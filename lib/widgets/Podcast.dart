@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Podcast.g.dart';
-
+part 'package:fresh_air/widgets/Podcast.g.dart';
 
 @JsonSerializable()
 class PodcastData extends Object with _$PodcastDataSerializerMixin {
-  PodcastData(this.title, this.description, this.uri,
-           this.broadcastDate);
+  PodcastData(this.title, this.description, this.uri, this.broadcastDate);
 
   String title, description, uri;
   @JsonKey(name: "broadcast_date")
@@ -15,4 +13,15 @@ class PodcastData extends Object with _$PodcastDataSerializerMixin {
 
   factory PodcastData.fromJson(Map<String, dynamic> json) =>
       _$PodcastDataFromJson(json);
+}
+
+class Podcast extends StatelessWidget {
+  Podcast({Key key, this.data}) : super(key: key);
+
+  final PodcastData data;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Text(data.title);
+  }
 }
