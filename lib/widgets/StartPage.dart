@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/StreamingNowPage.dart';
-import 'package:fresh_air/widgets/ShowList.dart';
-import 'package:fresh_air/widgets/EventList.dart';
-import 'package:fresh_air/widgets/ContactPage.dart';
+import 'package:fresh_air/widgets/streaming_now/StreamingNowPage.dart';
+import 'package:fresh_air/widgets/shows/ShowList.dart';
+import 'package:fresh_air/widgets/events/EventList.dart';
+import 'package:fresh_air/widgets/contact/ContactPage.dart';
 import 'package:fresh_air/helpers/WebsiteAPI.dart';
-import 'package:fresh_air/widgets/ShowDetails.dart';
-import 'package:fresh_air/widgets/ShowPreview.dart';
+import 'package:fresh_air/widgets/shows/ShowDetails.dart';
+import 'package:fresh_air/widgets/shows/ShowPreview.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/ShowDetails.dart';
-import 'package:fresh_air/widgets/ShowOverview.dart';
+import 'package:fresh_air/widgets/shows/ShowDetails.dart';
+import 'package:fresh_air/widgets/shows/ShowOverview.dart';
 //import 'package:flutter/scheduler.dart' show timeDilation;
 
 class ShowPreview extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'package:fresh_air/widgets/ShowDetails.dart';
-import 'package:fresh_air/widgets/Podcast.dart';
+import 'package:fresh_air/widgets/shows/ShowDetails.dart';
+import 'package:fresh_air/widgets/shows/Podcast.dart';
 
 class WebsiteAPI {
   static var _url = "https://freshair.org.uk/api/";

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-part 'package:fresh_air/widgets/Podcast.g.dart';
+part 'package:fresh_air/widgets/shows/Podcast.g.dart';
 
 @JsonSerializable()
 class PodcastData extends Object with _$PodcastDataSerializerMixin {
@@ -20,8 +21,22 @@ class Podcast extends StatelessWidget {
 
   final PodcastData data;
 
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Text(data.title);
+    return new ListTile(
+      title: new Text(data.title),
+      trailing: new Icon(Icons.play_arrow),
+      onTap: () {
+        _launchURL(data.uri);
+      },
+    );
   }
 }

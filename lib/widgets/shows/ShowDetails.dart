@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'package:fresh_air/widgets/ShowDetails.g.dart';
+part 'package:fresh_air/widgets/shows/ShowDetails.g.dart';
 
 @JsonSerializable()
 class ShowData extends Object with _$ShowDataSerializerMixin {
