@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'StartPage.dart';
+import 'package:fresh_air/widgets/StartPage.dart';
 
 void main() => runApp(new FreshAir());
 
