@@ -11,7 +11,7 @@ class _StreamingNowPageState extends State<StreamingNowPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Text("Streaming Now"),
+      body: new Text("https://studio.freshair.org.uk:8443/radio"),
     );
   }
 }
