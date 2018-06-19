@@ -1,3 +1,4 @@
+import 'package:fresh_air/widgets/events/EventPreview.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -27,6 +28,19 @@ class WebsiteAPI {
       podcastsMap.forEach((item) {
         PodcastData podcast = new PodcastData.fromJson(item);
         list.add(podcast);
+      });
+      return list;
+    });
+    return list;
+  }
+
+  static Future<List<EventData>> getAllEvents() async {
+    var list = await http.read(_url + "/all").then((events) {
+      List<EventData> list = new List();
+      List eventsMap = json.decode(events);
+      eventsMap.forEach((item) {
+        EventData event = new EventData.fromJson(item);
+        list.add(event);
       });
       return list;
     });

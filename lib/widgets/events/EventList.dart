@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_air/widgets/events/EventPreview.dart';
 
-class EventList extends StatefulWidget {
-  EventList({Key key}) : super(key : key);
+class EventList extends StatelessWidget {
+  EventList({Key key, this.previews}) : super(key: key);
+  final List<EventPreview> previews;
 
-  @override
-  _EventListState createState() => new _EventListState();
-}
-
-class _EventListState extends State<EventList> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new Text("Events"),
-      ),
-    );
+    return new GridView.builder(
+        gridDelegate:
+        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.8),
+        itemCount: previews.length,
+        itemBuilder: (context, index) {
+          return previews[index];
+        });
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_air/widgets/events/EventPreview.dart';
 import 'package:fresh_air/widgets/streaming_now/StreamingNowPage.dart';
 import 'package:fresh_air/widgets/shows/ShowList.dart';
 import 'package:fresh_air/widgets/events/EventList.dart';
@@ -42,7 +43,7 @@ class _StartPageState extends State<StartPage> {
                   if (header != "Streaming Now") {
                     header = "Streaming Now";
                   }
-                  body = StreamingNowPage();
+                  body = new StreamingNowPage();
                 });
                 Navigator.pop(context);
               },
@@ -74,10 +75,26 @@ class _StartPageState extends State<StartPage> {
             new ListTile(
               title: new Text('Events'),
               onTap: () {
-                setState(() {
-                  header = "Events";
-                  body = EventList();
-                });
+                setState(
+                  () {
+                    header = "Events";
+                    body = new FutureBuilder<List<EventData>>(
+                      future: WebsiteAPI.getAllEvents(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) print(snapshot.error);
+                        if (snapshot.hasData) {
+                          var list = snapshot.data.map((item) {
+                            return new EventPreview(data: item);
+                          }).toList();
+                          return new EventList(previews: list);
+                        } else {
+                          return new Center(
+                              child: new CircularProgressIndicator());
+                        }
+                      },
+                    );
+                  },
+                );
                 Navigator.pop(context);
               },
             ),
