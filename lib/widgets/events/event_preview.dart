@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_air/helpers/date_time_formatter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'package:fresh_air/widgets/events/event_preview.g.dart';
@@ -16,13 +17,14 @@ class EventData extends Object with _$EventDataSerializerMixin {
 class EventPreview extends StatelessWidget {
   EventPreview({Key key, EventData data})
       : name = data.name,
-        start = data.start,
-        end = data.end,
+        start = DateTimeFormatter.parse(data.start),
+        end = DateTimeFormatter.parse(data.end),
         location = data.location,
         description = data.description,
         super(key: key);
 
-  final String name, start, end, location, description;
+  final String name, location, description;
+  final DateTime start, end;
 
   @override
   Widget build(BuildContext context) {

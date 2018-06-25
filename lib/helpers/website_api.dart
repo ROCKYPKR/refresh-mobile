@@ -37,7 +37,7 @@ class WebsiteAPI {
   static Future<List<EventData>> getAllEvents() async {
     Future<List<EventData>> future = new Future(() {
       return [
-        new EventData("Event Name", "6/19/2018", "6/25/2018", "Liquid Rooms",
+        new EventData("Event Name", "Sunday 25 January 20:00", "Monday 01 June 10:00", "Liquid Rooms",
             "This is an event"),
       ];
     });

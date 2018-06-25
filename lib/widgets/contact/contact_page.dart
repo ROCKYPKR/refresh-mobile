@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_air/cross_platform_wrappers/platform_button.dart';
 import 'package:fresh_air/helpers/broadcast_api.dart';
 
 class ContactPage extends StatelessWidget {
@@ -30,7 +31,7 @@ class ContactPage extends StatelessWidget {
             ],
           ),
         ),
-        new RaisedButton(
+        new PlatformButton(
           child: new Text("Submit"),
           onPressed: () {
             DateTime now = new DateTime.now();

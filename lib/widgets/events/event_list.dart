@@ -26,20 +26,35 @@ class _EventListState extends State<EventList> {
 
   List<EventPreview> filterList(
       List<EventPreview> list, EventFilterValues values) {
-    print(values.name);
     list = list.where((preview) {
       return preview.name.toLowerCase().contains(values.name.toLowerCase()) &&
           preview.location
               .toLowerCase()
               .contains(values.location.toLowerCase());
     }).toList();
-    if (values.start != "") {
-      if (values.startToggle == "before") {
-      } else if (values.startToggle == "after") {}
+    if (values.start != null) {
+      if (values.startToggle == "Before") {
+        list = list.where((preview) {
+          print(preview.start.isBefore(values.start));
+          return preview.start.isBefore(values.start);
+        }).toList();
+      } else if (values.startToggle == "After") {
+        list = list.where((preview) {
+          print(preview.start.isAfter(values.start));
+          return preview.start.isAfter(values.start);
+        }).toList();
+      }
     }
-    if (values.end != "any") {
-      if (values.endToggle == "before") {
-      } else if (values.endToggle == "before") {}
+    if (values.end != null) {
+      if (values.endToggle == "Before") {
+        list = list.where((preview) {
+          return preview.end.isBefore(values.end);
+        }).toList();
+      } else if (values.endToggle == "After") {
+        list = list.where((preview) {
+          return preview.end.isAfter(values.end);
+        }).toList();
+      }
     }
     return list;
   }

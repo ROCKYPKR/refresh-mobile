@@ -2,12 +2,13 @@ class EventFilterValues {
   EventFilterValues(
       {this.name = "",
       this.location = "",
-      this.start = "",
-      this.startToggle = "before",
-      this.end = "",
-      this.endToggle = "before"});
+      this.start,
+      this.startToggle = "Before",
+      this.end,
+      this.endToggle = "Before"});
 
-  String name, location, start, startToggle, end, endToggle;
+  String name, location, startToggle, endToggle;
+  DateTime start, end;
 
   @override
   int get hashCode =>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_air/cross_platform_wrappers/platform_circular_indicator.dart';
 import 'package:fresh_air/helpers/website_api.dart';
 import 'package:fresh_air/widgets/shows/podcast.dart';
 import 'package:fresh_air/widgets/shows/show_details.dart';
@@ -37,7 +38,9 @@ class ShowOverview extends StatelessWidget {
                   }).toList();
                   return new PodcastList(data: list);
                 } else {
-                  return new Center(child: new CircularProgressIndicator());
+                  return new Center(
+                    child: new PlatformCircularIndicator(),
+                  );
                 }
               },
             ),

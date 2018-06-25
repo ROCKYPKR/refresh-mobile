@@ -28,8 +28,8 @@ class EventFilter extends StatelessWidget {
                       return new Column(
                         children: <Widget>[
                           TextField(
-                            decoration: InputDecoration(
-                                labelText: "Filter by name"),
+                            decoration:
+                                InputDecoration(labelText: "Filter by name"),
                             onChanged: (text) {
                               values.name = text;
                               callback(values);
@@ -42,6 +42,112 @@ class EventFilter extends StatelessWidget {
                               values.location = text;
                               callback(values);
                             },
+                          ),
+                          Row(
+                            children: <Widget>[
+                              DropdownButton<String>(
+                                value: values.startToggle,
+                                onChanged: (value) {
+                                  values.startToggle = value;
+                                  callback(values);
+                                },
+                                items: <DropdownMenuItem<String>>[
+                                  DropdownMenuItem<String>(
+                                    child: new Text("Before"),
+                                    value: "Before",
+                                  ),
+                                  DropdownMenuItem<String>(
+                                    child: new Text("After"),
+                                    value: "After",
+                                  ),
+                                ],
+                              ),
+                              RaisedButton(
+                                child: new Text(values.start == null
+                                    ? "Choose a Date and Time"
+                                    : values.start.toString()),
+                                onPressed: () async {
+                                  DateTime date = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now().subtract(
+                                          const Duration(days: 365 * 5),
+                                        ),
+                                    lastDate: DateTime.now().add(
+                                          const Duration(days: 365 * 5),
+                                        ),
+                                  );
+                                  if (date != null) {
+                                    TimeOfDay time = await showTimePicker(
+                                        context: context,
+                                        initialTime: new TimeOfDay.now());
+                                    if (time != null) {
+                                      DateTime result = DateTime(
+                                          date.year,
+                                          date.month,
+                                          date.day,
+                                          time.hour,
+                                          time.minute);
+                                      values.start = result;
+                                      callback(values);
+                                    }
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              DropdownButton<String>(
+                                value: values.endToggle,
+                                onChanged: (value) {
+                                  values.endToggle = value;
+                                  callback(values);
+                                },
+                                items: <DropdownMenuItem<String>>[
+                                  DropdownMenuItem<String>(
+                                    child: new Text("Before"),
+                                    value: "Before",
+                                  ),
+                                  DropdownMenuItem<String>(
+                                    child: new Text("After"),
+                                    value: "After",
+                                  ),
+                                ],
+                              ),
+                              RaisedButton(
+                                child: new Text(values.end == null
+                                                    ? "Choose a Date and Time"
+                                                    : values.end.toString()),
+                                onPressed: () async {
+                                  DateTime date = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now().subtract(
+                                      const Duration(days: 365 * 5),
+                                      ),
+                                    lastDate: DateTime.now().add(
+                                      const Duration(days: 365 * 5),
+                                      ),
+                                    );
+                                  if (date != null) {
+                                    TimeOfDay time = await showTimePicker(
+                                        context: context,
+                                        initialTime: new TimeOfDay.now());
+                                    if (time != null) {
+                                      DateTime result = DateTime(
+                                          date.year,
+                                          date.month,
+                                          date.day,
+                                          time.hour,
+                                          time.minute);
+                                      values.end = result;
+                                      callback(values);
+                                    }
+                                  }
+                                },
+                                ),
+                            ],
                           ),
                         ],
                       );

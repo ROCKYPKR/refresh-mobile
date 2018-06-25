@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:fresh_air/cross_platform_wrappers/platform_circular_indicator.dart';
 import 'package:fresh_air/widgets/events/event_filter.dart';
 import 'package:fresh_air/widgets/events/event_preview.dart';
 import 'package:fresh_air/widgets/streaming_now/streaming_now_page.dart';
@@ -69,7 +71,7 @@ class _StartPageState extends State<StartPage> {
                         return new ShowList(previews: list);
                       } else {
                         return new Center(
-                            child: new CircularProgressIndicator());
+                            child: new PlatformCircularIndicator());
                       }
                     },
                   );
@@ -94,7 +96,7 @@ class _StartPageState extends State<StartPage> {
                           return new EventList(previews: list);
                         } else {
                           return new Center(
-                              child: new CircularProgressIndicator());
+                              child: new PlatformCircularIndicator());
                         }
                       },
                     );
