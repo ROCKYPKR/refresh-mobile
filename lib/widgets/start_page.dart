@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/events/EventPreview.dart';
-import 'package:fresh_air/widgets/streaming_now/StreamingNowPage.dart';
-import 'package:fresh_air/widgets/shows/ShowList.dart';
-import 'package:fresh_air/widgets/events/EventList.dart';
-import 'package:fresh_air/widgets/contact/ContactPage.dart';
-import 'package:fresh_air/helpers/WebsiteAPI.dart';
-import 'package:fresh_air/widgets/shows/ShowDetails.dart';
-import 'package:fresh_air/widgets/shows/ShowPreview.dart';
+import 'package:fresh_air/widgets/events/event_filter.dart';
+import 'package:fresh_air/widgets/events/event_preview.dart';
+import 'package:fresh_air/widgets/streaming_now/streaming_now_page.dart';
+import 'package:fresh_air/widgets/shows/show_list.dart';
+import 'package:fresh_air/widgets/events/event_list.dart';
+import 'package:fresh_air/widgets/contact/contact_page.dart';
+import 'package:fresh_air/helpers/website_api.dart';
+import 'package:fresh_air/widgets/shows/show_details.dart';
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);
@@ -17,6 +18,7 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   Widget body;
+  List<Widget> appBarActions;
   String header = "Streaming Now";
 
   @override
@@ -25,13 +27,16 @@ class _StartPageState extends State<StartPage> {
       appBar: new AppBar(
         centerTitle: true,
         title: new Text(header),
+        actions: appBarActions,
       ),
       drawer: new Drawer(
         child: new ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             new DrawerHeader(
-              child: new Center(child: new Text("Fresh Air")),
+              child: new Center(
+                child: new Text("Fresh Air"),
+              ),
               decoration: new BoxDecoration(
                 color: Colors.green,
               ),
@@ -93,6 +98,7 @@ class _StartPageState extends State<StartPage> {
                         }
                       },
                     );
+                    appBarActions = <Widget>[EventFilter()];
                   },
                 );
                 Navigator.pop(context);

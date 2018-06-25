@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/shows/ShowPreview.dart';
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class ShowList extends StatelessWidget {
   ShowList({Key key, this.previews}) : super(key: key);

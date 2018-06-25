@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/helpers/WebsiteAPI.dart';
-import 'package:fresh_air/widgets/shows/Podcast.dart';
-import 'package:fresh_air/widgets/shows/ShowDetails.dart';
-import 'package:fresh_air/widgets/shows/PodcastList.dart';
+import 'package:fresh_air/helpers/website_api.dart';
+import 'package:fresh_air/widgets/shows/podcast.dart';
+import 'package:fresh_air/widgets/shows/show_details.dart';
+import 'package:fresh_air/widgets/shows/podcast_list.dart';
 
 class ShowOverview extends StatelessWidget {
   ShowOverview({Key key, this.data}) : super(key: key);
