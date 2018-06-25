@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/shows/Podcast.dart';
+import 'package:fresh_air/widgets/shows/podcast.dart';
 
 class PodcastList extends StatelessWidget {
   PodcastList({Key key, this.data}) : super(key: key);

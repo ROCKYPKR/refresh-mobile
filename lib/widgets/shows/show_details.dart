@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'package:fresh_air/widgets/shows/ShowDetails.g.dart';
+part 'package:fresh_air/widgets/shows/show_details.g.dart';
 
 @JsonSerializable()
 class ShowData extends Object with _$ShowDataSerializerMixin {
@@ -16,28 +16,17 @@ class ShowData extends Object with _$ShowDataSerializerMixin {
       _$ShowDataFromJson(json);
 }
 
-class ShowDetails extends StatefulWidget {
-  ShowDetails({Key key, this.data}) : super(key: key);
+class ShowDetails extends StatelessWidget {
+  ShowDetails({Key key, ShowData data})
+      : slug = data.slug,
+        title = data.title,
+        tagLine = data.tagLine,
+        description = data.description,
+        link = data.link,
+        pic = data.pic,
+        super(key: key);
 
-  final ShowData data;
-
-  @override
-  _ShowDetailsState createState() => new _ShowDetailsState();
-}
-
-class _ShowDetailsState extends State<ShowDetails> {
-  String slug, title, tagLine, description, link, pic;
-
-  @override
-  void initState() {
-    super.initState();
-    slug = widget.data.slug;
-    title = widget.data.title;
-    tagLine = widget.data.tagLine;
-    description = widget.data.description;
-    link = widget.data.link;
-    pic = widget.data.pic;
-  }
+  final String slug, title, tagLine, description, link, pic;
 
   List<Widget> buildList() {
     List<String> data = [slug, title, tagLine, description, link];

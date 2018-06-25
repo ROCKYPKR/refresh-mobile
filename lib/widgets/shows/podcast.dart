@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part 'package:fresh_air/widgets/shows/Podcast.g.dart';
+part 'package:fresh_air/widgets/shows/podcast.g.dart';
 
 @JsonSerializable()
 class PodcastData extends Object with _$PodcastDataSerializerMixin {
@@ -33,7 +33,7 @@ class Podcast extends StatelessWidget {
   Widget build(BuildContext context) {
     return new ListTile(
       title: new Text(data.title),
-      trailing: new Icon(Icons.play_arrow),
+      trailing: new Icon(Icons.keyboard_arrow_right),
       onTap: () {
         _launchURL(data.uri);
       },

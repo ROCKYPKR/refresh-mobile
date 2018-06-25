@@ -1,9 +1,9 @@
-import 'package:fresh_air/widgets/events/EventPreview.dart';
+import 'package:fresh_air/widgets/events/event_preview.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'package:fresh_air/widgets/shows/ShowDetails.dart';
-import 'package:fresh_air/widgets/shows/Podcast.dart';
+import 'package:fresh_air/widgets/shows/show_details.dart';
+import 'package:fresh_air/widgets/shows/podcast.dart';
 
 class WebsiteAPI {
   static var _url = "https://freshair.org.uk/api/";
@@ -35,6 +35,14 @@ class WebsiteAPI {
   }
 
   static Future<List<EventData>> getAllEvents() async {
+    Future<List<EventData>> future = new Future(() {
+      return [
+        new EventData("Event Name", "6/19/2018", "6/25/2018", "Liquid Rooms",
+            "This is an event"),
+      ];
+    });
+    return future;
+    /*
     var list = await http.read(_url + "/all").then((events) {
       List<EventData> list = new List();
       List eventsMap = json.decode(events);
@@ -44,6 +52,6 @@ class WebsiteAPI {
       });
       return list;
     });
-    return list;
+    return list;*/
   }
 }
