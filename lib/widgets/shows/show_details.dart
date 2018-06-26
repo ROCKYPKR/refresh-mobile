@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-part 'package:fresh_air/widgets/shows/show_details.g.dart';
-
-@JsonSerializable()
-class ShowData extends Object with _$ShowDataSerializerMixin {
-  ShowData(this.slug, this.title, this.tagLine, this.description, this.link,
-      this.pic);
-
-  String slug, title, description, link, pic;
-  @JsonKey(name: "tag_line")
-  String tagLine;
-
-  factory ShowData.fromJson(Map<String, dynamic> json) =>
-      _$ShowDataFromJson(json);
-}
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class ShowDetails extends StatelessWidget {
   ShowDetails({Key key, ShowData data})

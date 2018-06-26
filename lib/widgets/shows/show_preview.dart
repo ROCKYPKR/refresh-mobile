@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/shows/show_details.dart';
 import 'package:fresh_air/widgets/shows/show_overview.dart';
-//import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:json_annotation/json_annotation.dart';
 
-class ShowPreview extends StatefulWidget {
-  ShowPreview({Key key, this.data}) : super(key: key);
+part 'package:fresh_air/widgets/shows/show_preview.g.dart';
 
-  final ShowData data;
+@JsonSerializable()
+class ShowData extends Object with _$ShowDataSerializerMixin {
+  ShowData(this.slug, this.title, this.tagLine, this.description, this.link,
+      this.pic);
 
-  @override
-  _ShowPreviewState createState() => new _ShowPreviewState();
+  String slug, title, description, link, pic;
+  @JsonKey(name: "tag_line")
+  String tagLine;
+
+  factory ShowData.fromJson(Map<String, dynamic> json) =>
+      _$ShowDataFromJson(json);
 }
 
-class _ShowPreviewState extends State<ShowPreview> {
-  String slug, title, tagLine, description, link, pic;
+class ShowPreview extends StatelessWidget {
+  ShowPreview({Key key, this.data})
+      : slug = data.slug,
+        title = data.title,
+        tagLine = data.tagLine,
+        description = data.description,
+        link = data.link,
+        pic = data.pic,
+        super(key: key);
 
-  @override
-  void initState() {
-    super.initState();
-    slug = widget.data.slug;
-    title = widget.data.title;
-    tagLine = widget.data.tagLine;
-    description = widget.data.description;
-    link = widget.data.link;
-    pic = widget.data.pic;
-  }
+  final ShowData data;
+  final String slug, title, tagLine, description, link, pic;
 
   Widget buildImage() {
     if (pic == null) {
@@ -48,7 +52,7 @@ class _ShowPreviewState extends State<ShowPreview> {
           Navigator.push(
             context,
             new MaterialPageRoute(
-                builder: (context) => new ShowOverview(data: widget.data)),
+                builder: (context) => new ShowOverview(data: data)),
           );
         },
         child: new Hero(
