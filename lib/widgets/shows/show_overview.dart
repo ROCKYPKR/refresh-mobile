@@ -4,6 +4,7 @@ import 'package:fresh_air/helpers/website_api.dart';
 import 'package:fresh_air/widgets/shows/podcast.dart';
 import 'package:fresh_air/widgets/shows/show_details.dart';
 import 'package:fresh_air/widgets/shows/podcast_list.dart';
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class ShowOverview extends StatelessWidget {
   ShowOverview({Key key, this.data}) : super(key: key);

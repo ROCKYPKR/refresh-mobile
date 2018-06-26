@@ -4,3 +4,8 @@ class EventFilterChangeAction {
   final EventFilterValues values;
   EventFilterChangeAction(this.values);
 }
+
+class ShowSearchChangeAction {
+  final String search;
+  ShowSearchChangeAction(this.search);
+}

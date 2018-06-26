@@ -4,8 +4,8 @@ import 'package:fresh_air/redux/actions.dart';
 import 'package:fresh_air/redux/app_state.dart';
 import 'package:fresh_air/widgets/events/event_filter_values.dart';
 
-class EventFilter extends StatelessWidget {
-  EventFilter({Key key}) : super(key: key);
+class EventFilterButton extends StatelessWidget {
+  EventFilterButton({Key key}) : super(key: key);
   final EventFilterValues values = new EventFilterValues();
 
   @override
@@ -18,7 +18,7 @@ class EventFilter extends StatelessWidget {
           builder: (_) => new Container(
                 height: 500.0,
                 padding: const EdgeInsets.all(20.0),
-                child: new Container(
+
                   child: StoreConnector<AppState, Function(EventFilterValues)>(
                     converter: (store) {
                       return (values) =>
@@ -154,7 +154,7 @@ class EventFilter extends StatelessWidget {
                     },
                   ),
                 ),
-              ),
+
         );
       },
     );
