@@ -32,14 +32,14 @@ class ShowPreview extends StatelessWidget {
 
   Widget buildImage() {
     if (pic == null) {
-      return new Container(
+      return Container(
         margin: const EdgeInsets.all(5.0),
-        child: new Image.asset('assets/freshair_default_show_pic.png'),
+        child: Image.asset('assets/freshair_default_show_pic.png'),
       );
     } else {
-      return new Container(
+      return Container(
         margin: const EdgeInsets.all(5.0),
-        child: new Image.network(pic),
+        child: Image.network(pic),
       );
     }
   }
@@ -47,21 +47,21 @@ class ShowPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //timeDilation = 5.0;
-    return new GestureDetector(
+    return GestureDetector(
         onTap: () {
           Navigator.push(
             context,
-            new MaterialPageRoute(
-                builder: (context) => new ShowOverview(data: data)),
+            MaterialPageRoute(
+                builder: (context) => ShowOverview(data: data)),
           );
         },
-        child: new Hero(
+        child: Hero(
           tag: slug,
-          child: new Card(
-            child: new Column(
+          child: Card(
+            child: Column(
               children: <Widget>[
                 buildImage(),
-                new Center(child: new Text(title, textAlign: TextAlign.center)),
+                Center(child: Text(title, textAlign: TextAlign.center)),
               ],
             ),
           ),

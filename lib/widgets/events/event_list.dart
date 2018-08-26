@@ -10,7 +10,7 @@ class EventList extends StatefulWidget {
   final List<EventPreview> previews;
 
   @override
-  _EventListState createState() => new _EventListState(previews);
+  _EventListState createState() => _EventListState(previews);
 }
 
 class _EventListState extends State<EventList> {
@@ -61,13 +61,13 @@ class _EventListState extends State<EventList> {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<AppState, List<EventPreview>>(
+    return StoreConnector<AppState, List<EventPreview>>(
       converter: (store) {
         EventFilterValues values = store.state.eventValues;
         return filterList(previews, values);
       },
       builder: (context, list) {
-        return new ListView(
+        return ListView(
           children: list,
         );
       },

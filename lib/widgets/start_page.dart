@@ -37,8 +37,14 @@ class _StartPageState extends State<StartPage> {
           children: <Widget>[
             new DrawerHeader(
               child: new Center(
-                child: new Text("Fresh Air"),
-              ),
+                  child: new Column(
+                children: <Widget>[
+                  const Image(
+                    image: const AssetImage('assets/freshair_icon.png'),
+                  ),
+                  const Text("Fresh Air")
+                ],
+              )),
               decoration: new BoxDecoration(
                 color: Colors.green,
               ),

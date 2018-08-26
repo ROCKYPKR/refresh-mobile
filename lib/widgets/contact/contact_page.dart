@@ -4,25 +4,25 @@ import 'package:fresh_air/helpers/broadcast_api.dart';
 
 class ContactPage extends StatelessWidget {
   ContactPage({Key key}) : super(key: key);
-  final TextEditingController nameController = new TextEditingController();
-  final TextEditingController messageController = new TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
+    return Column(
       children: <Widget>[
-        new Container(
-          margin: new EdgeInsets.all(20.0),
+        Container(
+          margin: EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
-              new TextField(
-                decoration: new InputDecoration(
+              TextField(
+                decoration: InputDecoration(
                   hintText: 'Please enter your name.',
                 ),
                 controller: nameController,
               ),
-              new TextField(
-                decoration: new InputDecoration(
+              TextField(
+                decoration: InputDecoration(
                   hintText: 'Please enter your message to the studio.',
                 ),
                 controller: messageController,
@@ -31,10 +31,10 @@ class ContactPage extends StatelessWidget {
             ],
           ),
         ),
-        new PlatformButton(
-          child: new Text("Submit"),
+        PlatformButton(
+          child: Text("Submit"),
           onPressed: () {
-            DateTime now = new DateTime.now();
+            DateTime now = DateTime.now();
             String time = now.minute < 10
                 ? "${now.hour.toString()}:0${now.minute
                 .toString()}"

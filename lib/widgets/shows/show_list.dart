@@ -16,13 +16,13 @@ class ShowList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<AppState, List<ShowPreview>>(
+    return StoreConnector<AppState, List<ShowPreview>>(
       converter: (store) {
         return filterList(previews, store.state.showSearch);
       },
       builder: (context, list) {
-        return new GridView.builder(
-            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+        return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, childAspectRatio: 0.8),
             itemCount: list.length,
             itemBuilder: (context, index) {

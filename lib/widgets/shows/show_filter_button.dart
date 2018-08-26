@@ -8,21 +8,21 @@ class ShowFilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new IconButton(
+    return IconButton(
       icon: const Icon(Icons.search),
       onPressed: () {
         showModalBottomSheet(
             context: context,
-            builder: (_) => new Container(
+            builder: (_) => Container(
                   height: 500.0,
                   padding: const EdgeInsets.all(20.0),
-                  child: new StoreConnector<AppState, Function(String)>(
+                  child: StoreConnector<AppState, Function(String)>(
                     converter: (store) {
                       return (search) =>
                           store.dispatch(ShowSearchChangeAction(search));
                     },
                     builder: (context, callback) {
-                      return new TextField(
+                      return TextField(
                         decoration:
                             InputDecoration(labelText: "Search by name"),
                         onChanged: (text) {

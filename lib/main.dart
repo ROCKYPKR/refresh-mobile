@@ -20,12 +20,12 @@ class FreshAir extends StatelessWidget {
   Widget build(BuildContext context) {
     return new StoreProvider(
       store: store,
-      child: new MaterialApp(
+      child: MaterialApp(
         title: 'FreshAir',
-        theme: new ThemeData(
+        theme: ThemeData(
           primarySwatch: Colors.green,
         ),
-        home: new StartPage(),
+        home: StartPage(),
       ),
     );
   }
