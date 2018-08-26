@@ -10,6 +10,6 @@ class AppState {
   final String showSearch;
 
   AppState copyWith({EventFilterValues eventValues, String showSearch}) {
-    return new AppState(eventValues: eventValues ?? this.eventValues, showSearch: showSearch ?? this.showSearch);
+    return AppState(eventValues: eventValues ?? this.eventValues, showSearch: showSearch ?? this.showSearch);
   }
 }
