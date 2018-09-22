@@ -4,28 +4,28 @@ import 'package:fresh_air/redux/actions.dart';
 import 'package:fresh_air/redux/app_state.dart';
 import 'package:fresh_air/widgets/events/event_filter_values.dart';
 
-class EventFilter extends StatelessWidget {
-  EventFilter({Key key}) : super(key: key);
-  final EventFilterValues values = new EventFilterValues();
+class EventFilterButton extends StatelessWidget {
+  EventFilterButton({Key key}) : super(key: key);
+  final EventFilterValues values = EventFilterValues();
 
   @override
   Widget build(BuildContext context) {
-    return new IconButton(
+    return IconButton(
       icon: const Icon(Icons.filter_list),
       onPressed: () {
         showModalBottomSheet(
           context: context,
-          builder: (_) => new Container(
+          builder: (_) => Container(
                 height: 500.0,
                 padding: const EdgeInsets.all(20.0),
-                child: new Container(
+
                   child: StoreConnector<AppState, Function(EventFilterValues)>(
                     converter: (store) {
                       return (values) =>
                           store.dispatch(EventFilterChangeAction(values));
                     },
                     builder: (context, callback) {
-                      return new Column(
+                      return Column(
                         children: <Widget>[
                           TextField(
                             decoration:
@@ -53,17 +53,17 @@ class EventFilter extends StatelessWidget {
                                 },
                                 items: <DropdownMenuItem<String>>[
                                   DropdownMenuItem<String>(
-                                    child: new Text("Before"),
+                                    child: Text("Before"),
                                     value: "Before",
                                   ),
                                   DropdownMenuItem<String>(
-                                    child: new Text("After"),
+                                    child: Text("After"),
                                     value: "After",
                                   ),
                                 ],
                               ),
                               RaisedButton(
-                                child: new Text(values.start == null
+                                child: Text(values.start == null
                                     ? "Choose a Date and Time"
                                     : values.start.toString()),
                                 onPressed: () async {
@@ -80,7 +80,7 @@ class EventFilter extends StatelessWidget {
                                   if (date != null) {
                                     TimeOfDay time = await showTimePicker(
                                         context: context,
-                                        initialTime: new TimeOfDay.now());
+                                        initialTime: TimeOfDay.now());
                                     if (time != null) {
                                       DateTime result = DateTime(
                                           date.year,
@@ -106,17 +106,17 @@ class EventFilter extends StatelessWidget {
                                 },
                                 items: <DropdownMenuItem<String>>[
                                   DropdownMenuItem<String>(
-                                    child: new Text("Before"),
+                                    child: Text("Before"),
                                     value: "Before",
                                   ),
                                   DropdownMenuItem<String>(
-                                    child: new Text("After"),
+                                    child: Text("After"),
                                     value: "After",
                                   ),
                                 ],
                               ),
                               RaisedButton(
-                                child: new Text(values.end == null
+                                child: Text(values.end == null
                                                     ? "Choose a Date and Time"
                                                     : values.end.toString()),
                                 onPressed: () async {
@@ -133,7 +133,7 @@ class EventFilter extends StatelessWidget {
                                   if (date != null) {
                                     TimeOfDay time = await showTimePicker(
                                         context: context,
-                                        initialTime: new TimeOfDay.now());
+                                        initialTime: TimeOfDay.now());
                                     if (time != null) {
                                       DateTime result = DateTime(
                                           date.year,
@@ -154,7 +154,7 @@ class EventFilter extends StatelessWidget {
                     },
                   ),
                 ),
-              ),
+
         );
       },
     );

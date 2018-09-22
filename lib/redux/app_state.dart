@@ -4,11 +4,12 @@ import 'package:meta/meta.dart';
 
 @immutable
 class AppState {
-  AppState({this.eventValues});
+  AppState({this.eventValues, this.showSearch = ""});
 
   final EventFilterValues eventValues;
+  final String showSearch;
 
-  AppState copyWith({EventFilterValues eventValues}) {
-    return new AppState(eventValues: eventValues ?? this.eventValues);
+  AppState copyWith({EventFilterValues eventValues, String showSearch}) {
+    return AppState(eventValues: eventValues ?? this.eventValues, showSearch: showSearch ?? this.showSearch);
   }
 }

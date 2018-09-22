@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-part 'package:fresh_air/widgets/shows/show_details.g.dart';
-
-@JsonSerializable()
-class ShowData extends Object with _$ShowDataSerializerMixin {
-  ShowData(this.slug, this.title, this.tagLine, this.description, this.link,
-      this.pic);
-
-  String slug, title, description, link, pic;
-  @JsonKey(name: "tag_line")
-  String tagLine;
-
-  factory ShowData.fromJson(Map<String, dynamic> json) =>
-      _$ShowDataFromJson(json);
-}
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class ShowDetails extends StatelessWidget {
   ShowDetails({Key key, ShowData data})
@@ -34,9 +19,9 @@ class ShowDetails extends StatelessWidget {
     resultList.add(buildImage());
     data.forEach((item) {
       if (item != null) {
-        resultList.add(new Container(
+        resultList.add(Container(
           margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-          child: new Text(
+          child: Text(
             item,
             textAlign: TextAlign.center,
           ),
@@ -48,14 +33,14 @@ class ShowDetails extends StatelessWidget {
 
   Widget buildImage() {
     if (pic == null) {
-      return new Container(
+      return Container(
         margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-        child: new Image.asset('assets/freshair_default_show_pic.png'),
+        child: Image.asset('assets/freshair_default_show_pic.png'),
       );
     } else {
-      return new Container(
+      return Container(
         margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-        child: new Image.network(pic),
+        child: Image.network(pic),
       );
     }
   }
@@ -64,13 +49,13 @@ class ShowDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return new Hero(
+    return Hero(
       tag: slug,
-      child: new Scaffold(
-        body: new SingleChildScrollView(
-          child: new ConstrainedBox(
-            constraints: new BoxConstraints(minHeight: height, minWidth: width),
-            child: new Card(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: height, minWidth: width),
+            child: Card(
               elevation: 20.0,
               child: Column(
                 children: buildList(),

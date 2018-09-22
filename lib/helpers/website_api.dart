@@ -1,8 +1,8 @@
 import 'package:fresh_air/widgets/events/event_preview.dart';
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'package:fresh_air/widgets/shows/show_details.dart';
 import 'package:fresh_air/widgets/shows/podcast.dart';
 
 class WebsiteAPI {

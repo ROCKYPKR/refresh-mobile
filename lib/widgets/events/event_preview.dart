@@ -28,24 +28,24 @@ class EventPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      title: new Column(
+    return ListTile(
+      title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new Text(name),
-          new Text(
+          Text(name),
+          Text(
             "$location, $start - $end",
-            style: new TextStyle(fontSize: 14.0),
+            style: TextStyle(fontSize: 14.0),
           )
         ],
       ),
-      subtitle: new Text(
+      subtitle: Text(
         description,
         overflow: TextOverflow.fade,
         maxLines: 3,
       ),
       isThreeLine: true,
-      trailing: new Icon(Icons.play_arrow),
+      trailing: Icon(Icons.play_arrow),
     );
   }
 }

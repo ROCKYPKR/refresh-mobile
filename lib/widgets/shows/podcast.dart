@@ -31,9 +31,9 @@ class Podcast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      title: new Text(data.title),
-      trailing: new Icon(Icons.keyboard_arrow_right),
+    return ListTile(
+      title: Text(data.title),
+      trailing: Icon(Icons.keyboard_arrow_right),
       onTap: () {
         _launchURL(data.uri);
       },

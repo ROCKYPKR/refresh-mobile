@@ -4,6 +4,7 @@ import 'package:fresh_air/helpers/website_api.dart';
 import 'package:fresh_air/widgets/shows/podcast.dart';
 import 'package:fresh_air/widgets/shows/show_details.dart';
 import 'package:fresh_air/widgets/shows/podcast_list.dart';
+import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class ShowOverview extends StatelessWidget {
   ShowOverview({Key key, this.data}) : super(key: key);
@@ -12,39 +13,39 @@ class ShowOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new DefaultTabController(
+    return DefaultTabController(
       length: 3,
-      child: new Scaffold(
-        appBar: new AppBar(
-          bottom: new TabBar(
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
             tabs: [
-              new Tab(text: "Details"),
-              new Tab(text: "Podcasts"),
-              new Tab(text: "Posts"),
+              Tab(text: "Details"),
+              Tab(text: "Podcasts"),
+              Tab(text: "Posts"),
             ],
           ),
-          title: new Text('Show Overview'),
+          title: Text('Show Overview'),
         ),
-        body: new TabBarView(
+        body: TabBarView(
           children: [
-            new ShowDetails(data: data),
-            new FutureBuilder<List<PodcastData>>(
+            ShowDetails(data: data),
+            FutureBuilder<List<PodcastData>>(
               future: WebsiteAPI.getPodcastsByShow(data.slug),
               builder: (context, snapshot) {
                 if (snapshot.hasError) print(snapshot.error);
                 if (snapshot.hasData) {
                   var list = snapshot.data.map((item) {
-                    return new Podcast(data: item);
+                    return Podcast(data: item);
                   }).toList();
-                  return new PodcastList(data: list);
+                  return PodcastList(data: list);
                 } else {
-                  return new Center(
-                    child: new PlatformCircularIndicator(),
+                  return Center(
+                    child: PlatformCircularIndicator(),
                   );
                 }
               },
             ),
-            new Icon(Icons.directions_bike),
+            Icon(Icons.directions_bike),
           ],
         ),
       ),

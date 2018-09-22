@@ -8,7 +8,7 @@ class PodcastList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
+    return ListView.builder(
       itemCount: data.length,
       itemBuilder: (context, index) {
         return data[index];

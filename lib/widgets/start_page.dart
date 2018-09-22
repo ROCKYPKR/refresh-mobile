@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fresh_air/cross_platform_wrappers/platform_circular_indicator.dart';
-import 'package:fresh_air/widgets/events/event_filter.dart';
+import 'package:fresh_air/widgets/events/event_filter_button.dart';
 import 'package:fresh_air/widgets/events/event_preview.dart';
+import 'package:fresh_air/widgets/shows/show_filter_button.dart';
 import 'package:fresh_air/widgets/streaming_now/streaming_now_page.dart';
 import 'package:fresh_air/widgets/shows/show_list.dart';
 import 'package:fresh_air/widgets/events/event_list.dart';
 import 'package:fresh_air/widgets/contact/contact_page.dart';
 import 'package:fresh_air/helpers/website_api.dart';
-import 'package:fresh_air/widgets/shows/show_details.dart';
 import 'package:fresh_air/widgets/shows/show_preview.dart';
 
 class StartPage extends StatefulWidget {
@@ -37,8 +37,14 @@ class _StartPageState extends State<StartPage> {
           children: <Widget>[
             new DrawerHeader(
               child: new Center(
-                child: new Text("Fresh Air"),
-              ),
+                  child: new Column(
+                children: <Widget>[
+                  const Image(
+                    image: const AssetImage('assets/freshair_icon.png'),
+                  ),
+                  const Text("Fresh Air")
+                ],
+              )),
               decoration: new BoxDecoration(
                 color: Colors.green,
               ),
@@ -51,6 +57,7 @@ class _StartPageState extends State<StartPage> {
                     header = "Streaming Now";
                   }
                   body = new StreamingNowPage();
+                  appBarActions = [];
                 });
                 Navigator.pop(context);
               },
@@ -75,6 +82,9 @@ class _StartPageState extends State<StartPage> {
                       }
                     },
                   );
+                  appBarActions = <Widget>[
+                    ShowFilterButton(),
+                  ];
                 });
                 Navigator.pop(context);
               },
@@ -100,7 +110,7 @@ class _StartPageState extends State<StartPage> {
                         }
                       },
                     );
-                    appBarActions = <Widget>[EventFilter()];
+                    appBarActions = <Widget>[EventFilterButton()];
                   },
                 );
                 Navigator.pop(context);
@@ -112,6 +122,7 @@ class _StartPageState extends State<StartPage> {
                 setState(() {
                   header = "Contact";
                   body = ContactPage();
+                  appBarActions = [];
                 });
                 Navigator.pop(context);
               },

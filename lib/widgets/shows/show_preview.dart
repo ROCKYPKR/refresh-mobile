@@ -1,41 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_air/widgets/shows/show_details.dart';
 import 'package:fresh_air/widgets/shows/show_overview.dart';
-//import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:json_annotation/json_annotation.dart';
 
-class ShowPreview extends StatefulWidget {
-  ShowPreview({Key key, this.data}) : super(key: key);
+part 'package:fresh_air/widgets/shows/show_preview.g.dart';
 
-  final ShowData data;
+@JsonSerializable()
+class ShowData extends Object with _$ShowDataSerializerMixin {
+  ShowData(this.slug, this.title, this.tagLine, this.description, this.link,
+      this.pic);
 
-  @override
-  _ShowPreviewState createState() => new _ShowPreviewState();
+  String slug, title, description, link, pic;
+  @JsonKey(name: "tag_line")
+  String tagLine;
+
+  factory ShowData.fromJson(Map<String, dynamic> json) =>
+      _$ShowDataFromJson(json);
 }
 
-class _ShowPreviewState extends State<ShowPreview> {
-  String slug, title, tagLine, description, link, pic;
+class ShowPreview extends StatelessWidget {
+  ShowPreview({Key key, this.data})
+      : slug = data.slug,
+        title = data.title,
+        tagLine = data.tagLine,
+        description = data.description,
+        link = data.link,
+        pic = data.pic,
+        super(key: key);
 
-  @override
-  void initState() {
-    super.initState();
-    slug = widget.data.slug;
-    title = widget.data.title;
-    tagLine = widget.data.tagLine;
-    description = widget.data.description;
-    link = widget.data.link;
-    pic = widget.data.pic;
-  }
+  final ShowData data;
+  final String slug, title, tagLine, description, link, pic;
 
   Widget buildImage() {
     if (pic == null) {
-      return new Container(
+      return Container(
         margin: const EdgeInsets.all(5.0),
-        child: new Image.asset('assets/freshair_default_show_pic.png'),
+        child: Image.asset('assets/freshair_default_show_pic.png'),
       );
     } else {
-      return new Container(
+      return Container(
         margin: const EdgeInsets.all(5.0),
-        child: new Image.network(pic),
+        child: Image.network(pic),
       );
     }
   }
@@ -43,21 +47,21 @@ class _ShowPreviewState extends State<ShowPreview> {
   @override
   Widget build(BuildContext context) {
     //timeDilation = 5.0;
-    return new GestureDetector(
+    return GestureDetector(
         onTap: () {
           Navigator.push(
             context,
-            new MaterialPageRoute(
-                builder: (context) => new ShowOverview(data: widget.data)),
+            MaterialPageRoute(
+                builder: (context) => ShowOverview(data: data)),
           );
         },
-        child: new Hero(
+        child: Hero(
           tag: slug,
-          child: new Card(
-            child: new Column(
+          child: Card(
+            child: Column(
               children: <Widget>[
                 buildImage(),
-                new Center(child: new Text(title, textAlign: TextAlign.center)),
+                Center(child: Text(title, textAlign: TextAlign.center)),
               ],
             ),
           ),
