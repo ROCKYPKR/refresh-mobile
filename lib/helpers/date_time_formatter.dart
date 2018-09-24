@@ -15,7 +15,7 @@ class DateTimeFormatter {
   ];
 
   static DateTime parse(String dateString) {
-    List<String> list = dateString.split(new RegExp(r'\s|:'));
+    List<String> list = dateString.split(RegExp(r'\s|:'));
     DateTime now = DateTime.now();
     int month =
         months.contains(list[2]) ? months.indexOf(list[2]) + 1 : now.month;

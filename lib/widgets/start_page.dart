@@ -15,29 +15,29 @@ class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);
 
   @override
-  _StartPageState createState() => new _StartPageState();
+  _StartPageState createState() => _StartPageState();
 }
 
 class _StartPageState extends State<StartPage> {
-  Widget body;
+  Widget body = StreamingNowPage();
   List<Widget> appBarActions;
   String header = "Streaming Now";
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         centerTitle: true,
-        title: new Text(header),
+        title: Text(header),
         actions: appBarActions,
       ),
-      drawer: new Drawer(
-        child: new ListView(
+      drawer: Drawer(
+        child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            new DrawerHeader(
-              child: new Center(
-                  child: new Column(
+            DrawerHeader(
+              child: Center(
+                  child: Column(
                 children: <Widget>[
                   const Image(
                     image: const AssetImage('assets/freshair_icon.png'),
@@ -45,40 +45,38 @@ class _StartPageState extends State<StartPage> {
                   const Text("Fresh Air")
                 ],
               )),
-              decoration: new BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.green,
               ),
             ),
-            new ListTile(
-              title: new Text('Streaming Now'),
+            ListTile(
+              title: Text('Streaming Now'),
               onTap: () {
                 setState(() {
-                  if (header != "Streaming Now") {
-                    header = "Streaming Now";
-                  }
-                  body = new StreamingNowPage();
+                  header = "Streaming Now";
+                  body = StreamingNowPage();
                   appBarActions = [];
                 });
                 Navigator.pop(context);
               },
             ),
-            new ListTile(
-              title: new Text('Shows'),
+            ListTile(
+              title: Text('Shows'),
               onTap: () {
                 setState(() {
                   header = "Shows";
-                  body = new FutureBuilder<List<ShowData>>(
+                  body = FutureBuilder<List<ShowData>>(
                     future: WebsiteAPI.getAllShows(),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) print(snapshot.error);
                       if (snapshot.hasData) {
                         var list = snapshot.data.map((item) {
-                          return new ShowPreview(data: item);
+                          return ShowPreview(data: item);
                         }).toList();
-                        return new ShowList(previews: list);
+                        return ShowList(previews: list);
                       } else {
-                        return new Center(
-                            child: new PlatformCircularIndicator());
+                        return Center(
+                            child: PlatformCircularIndicator());
                       }
                     },
                   );
@@ -89,24 +87,24 @@ class _StartPageState extends State<StartPage> {
                 Navigator.pop(context);
               },
             ),
-            new ListTile(
-              title: new Text('Events'),
+            ListTile(
+              title: Text('Events'),
               onTap: () {
                 setState(
                   () {
                     header = "Events";
-                    body = new FutureBuilder<List<EventData>>(
+                    body = FutureBuilder<List<EventData>>(
                       future: WebsiteAPI.getAllEvents(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) print(snapshot.error);
                         if (snapshot.hasData) {
                           var list = snapshot.data.map((item) {
-                            return new EventPreview(data: item);
+                            return EventPreview(data: item);
                           }).toList();
-                          return new EventList(previews: list);
+                          return EventList(previews: list);
                         } else {
-                          return new Center(
-                              child: new PlatformCircularIndicator());
+                          return Center(
+                              child: PlatformCircularIndicator());
                         }
                       },
                     );
@@ -116,8 +114,8 @@ class _StartPageState extends State<StartPage> {
                 Navigator.pop(context);
               },
             ),
-            new ListTile(
-              title: new Text('Contact'),
+            ListTile(
+              title: Text('Contact'),
               onTap: () {
                 setState(() {
                   header = "Contact";

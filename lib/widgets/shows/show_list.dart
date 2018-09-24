@@ -7,9 +7,9 @@ class ShowList extends StatelessWidget {
   ShowList({Key key, this.previews}) : super(key: key);
   final List<ShowPreview> previews;
 
-  List<ShowPreview> filterList(List<ShowPreview> list, String search){
-    list = list.where((preview){
-      return preview.title.contains(search);
+  List<ShowPreview> filterList(List<ShowPreview> list, String search) {
+    list = list.where((preview) {
+      return preview.title.toLowerCase().contains(search.toLowerCase());
     }).toList();
     return list;
   }
@@ -22,12 +22,13 @@ class ShowList extends StatelessWidget {
       },
       builder: (context, list) {
         return GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, childAspectRatio: 0.8),
-            itemCount: list.length,
-            itemBuilder: (context, index) {
-              return list[index];
-            });
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 0.8),
+          itemCount: list.length,
+          itemBuilder: (context, index) {
+            return list[index];
+          },
+        );
       },
     );
   }

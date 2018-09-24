@@ -7,8 +7,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 void main() {
-  final store = new Store<AppState>(appReducers, initialState: new AppState(eventValues: new EventFilterValues()));
-  runApp(new FreshAir(store));
+  final store = Store<AppState>(appReducers,
+      initialState: AppState(eventValues: EventFilterValues()));
+  runApp(FreshAir(store));
 }
 
 class FreshAir extends StatelessWidget {
@@ -18,7 +19,7 @@ class FreshAir extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider(
+    return StoreProvider(
       store: store,
       child: MaterialApp(
         title: 'FreshAir',

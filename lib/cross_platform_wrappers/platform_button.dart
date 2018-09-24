@@ -10,7 +10,7 @@ class PlatformButton extends PlatformWidget<RaisedButton, CupertinoButton> {
 
   @override
   RaisedButton createAndroidWidget(BuildContext context) {
-    return new RaisedButton(
+    return RaisedButton(
       child: child,
       onPressed: onPressed,
     );
@@ -18,7 +18,7 @@ class PlatformButton extends PlatformWidget<RaisedButton, CupertinoButton> {
 
   @override
   CupertinoButton createIosWidget(BuildContext context) {
-    return new CupertinoButton(
+    return CupertinoButton(
       child: child,
       onPressed: onPressed,
     );

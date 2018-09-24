@@ -10,10 +10,10 @@ class WebsiteAPI {
 
   static Future<List<ShowData>> getAllShows() async {
     var list = await http.read(_url + "shows/all").then((shows) {
-      List<ShowData> list = new List();
+      List<ShowData> list = List();
       List showsMap = json.decode(shows);
       showsMap.forEach((item) {
-        ShowData show = new ShowData.fromJson(item);
+        ShowData show = ShowData.fromJson(item);
         list.add(show);
       });
       return list;
@@ -23,10 +23,10 @@ class WebsiteAPI {
 
   static Future<List<PodcastData>> getPodcastsByShow(String slug) async {
     var list = await http.read(_url + "podcasts/" + slug).then((podcasts) {
-      List<PodcastData> list = new List();
+      List<PodcastData> list = List();
       List podcastsMap = json.decode(podcasts);
       podcastsMap.forEach((item) {
-        PodcastData podcast = new PodcastData.fromJson(item);
+        PodcastData podcast = PodcastData.fromJson(item);
         list.add(podcast);
       });
       return list;
@@ -35,19 +35,19 @@ class WebsiteAPI {
   }
 
   static Future<List<EventData>> getAllEvents() async {
-    Future<List<EventData>> future = new Future(() {
+    Future<List<EventData>> future = Future(() {
       return [
-        new EventData("Event Name", "Sunday 25 January 20:00", "Monday 01 June 10:00", "Liquid Rooms",
+        EventData("Event Name", "Sunday 25 January 20:00", "Monday 01 June 10:00", "Liquid Rooms",
             "This is an event"),
       ];
     });
     return future;
     /*
     var list = await http.read(_url + "/all").then((events) {
-      List<EventData> list = new List();
+      List<EventData> list = List();
       List eventsMap = json.decode(events);
       eventsMap.forEach((item) {
-        EventData event = new EventData.fromJson(item);
+        EventData event = EventData.fromJson(item);
         list.add(event);
       });
       return list;

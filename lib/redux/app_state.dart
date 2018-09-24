@@ -12,4 +12,8 @@ class AppState {
   AppState copyWith({EventFilterValues eventValues, String showSearch}) {
     return AppState(eventValues: eventValues ?? this.eventValues, showSearch: showSearch ?? this.showSearch);
   }
+
+  AppState reset(){
+    return AppState(eventValues: EventFilterValues(), showSearch: "");
+  }
 }
