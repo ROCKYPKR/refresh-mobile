@@ -8,11 +8,11 @@ class PlatformCircularIndicator extends PlatformWidget<CircularProgressIndicator
 
   @override
   CircularProgressIndicator createAndroidWidget(BuildContext context) {
-    return new CircularProgressIndicator();
+    return CircularProgressIndicator();
   }
 
   @override
   CupertinoActivityIndicator createIosWidget(BuildContext context) {
-    return new CupertinoActivityIndicator();
+    return CupertinoActivityIndicator();
   }
 }

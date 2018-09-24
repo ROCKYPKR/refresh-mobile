@@ -6,7 +6,7 @@ part of 'podcast.dart';
 // Generator: JsonSerializableGenerator
 // **************************************************************************
 
-PodcastData _$PodcastDataFromJson(Map<String, dynamic> json) => new PodcastData(
+PodcastData _$PodcastDataFromJson(Map<String, dynamic> json) => PodcastData(
     json['title'] as String,
     json['description'] as String,
     json['uri'] as String,

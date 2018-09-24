@@ -6,7 +6,7 @@ part of 'show_preview.dart';
 // Generator: JsonSerializableGenerator
 // **************************************************************************
 
-ShowData _$ShowDataFromJson(Map<String, dynamic> json) => new ShowData(
+ShowData _$ShowDataFromJson(Map<String, dynamic> json) => ShowData(
     json['slug'] as String,
     json['title'] as String,
     json['tag_line'] as String,

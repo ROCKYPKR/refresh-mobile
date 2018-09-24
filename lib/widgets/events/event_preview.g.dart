@@ -6,7 +6,7 @@ part of 'event_preview.dart';
 // Generator: JsonSerializableGenerator
 // **************************************************************************
 
-EventData _$EventDataFromJson(Map<String, dynamic> json) => new EventData(
+EventData _$EventDataFromJson(Map<String, dynamic> json) => EventData(
     json['name'] as String,
     json['start'] as String,
     json['end'] as String,

@@ -7,12 +7,12 @@ class PlatformScaffold extends PlatformWidget<Scaffold, CupertinoPageScaffold> {
 
   @override
   Scaffold createAndroidWidget(BuildContext context) {
-    return new Scaffold();
+    return Scaffold();
   }
 
   @override
   CupertinoPageScaffold createIosWidget(BuildContext context) {
-    return new CupertinoPageScaffold(
+    return CupertinoPageScaffold(
       child: null,
     );
   }
