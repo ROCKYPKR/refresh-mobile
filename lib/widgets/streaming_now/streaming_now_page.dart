@@ -79,7 +79,7 @@ class _StreamingNowPageState extends State<StreamingNowPage> {
   }
 
   void play() {
-    player.play("http://studio.freshair.org.uk:8000/radio");
+    player.play("http://radio.freshair.org.uk/radio");
     setState(() {
       isPlaying = true;
     });
@@ -102,5 +102,11 @@ class _StreamingNowPageState extends State<StreamingNowPage> {
   void reset() {
     stop();
     play();
+  }
+
+  @override
+  void dispose() {
+    player.stop();
+    super.dispose();
   }
 }
