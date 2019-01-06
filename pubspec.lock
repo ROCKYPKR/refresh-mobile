@@ -32,7 +32,7 @@ packages:
   audio_stream_player:
     dependency: "direct main"
     description:
-      path: "..\\audio_stream_player"
+      path: "../audio_stream_player"
       relative: true
     source: path
     version: "0.0.1"
