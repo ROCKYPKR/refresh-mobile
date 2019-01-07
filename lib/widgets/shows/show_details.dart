@@ -35,7 +35,7 @@ class ShowDetails extends StatelessWidget {
     if (pic == null) {
       return Container(
         margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-        child: Image.asset('assets/freshair_default_show_pic.png'),
+        child: Image.asset('assets/freshair_default_show_pic_grey.png'),
       );
     } else {
       return Container(

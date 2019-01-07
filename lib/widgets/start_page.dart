@@ -27,7 +27,6 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: Text(header),
         actions: appBarActions,
       ),
@@ -75,8 +74,7 @@ class _StartPageState extends State<StartPage> {
                         }).toList();
                         return ShowList(previews: list);
                       } else {
-                        return Center(
-                            child: PlatformCircularIndicator());
+                        return Center(child: PlatformCircularIndicator());
                       }
                     },
                   );
@@ -103,8 +101,7 @@ class _StartPageState extends State<StartPage> {
                           }).toList();
                           return EventList(previews: list);
                         } else {
-                          return Center(
-                              child: PlatformCircularIndicator());
+                          return Center(child: PlatformCircularIndicator());
                         }
                       },
                     );
