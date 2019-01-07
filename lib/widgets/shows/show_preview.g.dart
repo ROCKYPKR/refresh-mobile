@@ -3,16 +3,18 @@
 part of 'show_preview.dart';
 
 // **************************************************************************
-// Generator: JsonSerializableGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-ShowData _$ShowDataFromJson(Map<String, dynamic> json) => ShowData(
-    json['slug'] as String,
-    json['title'] as String,
-    json['tag_line'] as String,
-    json['description'] as String,
-    json['link'] as String,
-    json['pic'] as String);
+ShowData _$ShowDataFromJson(Map<String, dynamic> json) {
+  return new ShowData(
+      json['slug'] as String,
+      json['title'] as String,
+      json['tag_line'] as String,
+      json['description'] as String,
+      json['link'] as String,
+      json['pic'] as String);
+}
 
 abstract class _$ShowDataSerializerMixin {
   String get slug;

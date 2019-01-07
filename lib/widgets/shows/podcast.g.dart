@@ -3,14 +3,13 @@
 part of 'podcast.dart';
 
 // **************************************************************************
-// Generator: JsonSerializableGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-PodcastData _$PodcastDataFromJson(Map<String, dynamic> json) => PodcastData(
-    json['title'] as String,
-    json['description'] as String,
-    json['uri'] as String,
-    json['broadcast_date'] as String);
+PodcastData _$PodcastDataFromJson(Map<String, dynamic> json) {
+  return new PodcastData(json['title'] as String, json['description'] as String,
+      json['uri'] as String, json['broadcast_date'] as String);
+}
 
 abstract class _$PodcastDataSerializerMixin {
   String get title;

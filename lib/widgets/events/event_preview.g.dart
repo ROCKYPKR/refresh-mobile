@@ -3,15 +3,17 @@
 part of 'event_preview.dart';
 
 // **************************************************************************
-// Generator: JsonSerializableGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-EventData _$EventDataFromJson(Map<String, dynamic> json) => EventData(
-    json['name'] as String,
-    json['start'] as String,
-    json['end'] as String,
-    json['location'] as String,
-    json['description'] as String);
+EventData _$EventDataFromJson(Map<String, dynamic> json) {
+  return new EventData(
+      json['name'] as String,
+      json['start'] as String,
+      json['end'] as String,
+      json['location'] as String,
+      json['description'] as String);
+}
 
 abstract class _$EventDataSerializerMixin {
   String get name;

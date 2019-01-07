@@ -4,14 +4,12 @@ description: An application for FreshAir, the University of Edinburgh's student-
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: "^0.1.2"
   http: "^0.11.3+16"
   json_annotation: "^0.2.3"
   url_launcher: "^3.0.2"
   flutter_redux: "^0.5.2"
+  liquid_pull_to_refresh: ^1.0.2
   audio_stream_player:
     path: ../audio_stream_player
 
@@ -42,7 +40,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-   - assets/freshair_default_show_pic.png
+   - assets/freshair_default_show_pic_grey.png
+   - assets/freshair_default_show_pic_grey.png
    - assets/freshair_icon.png
 
   # To add assets to your application, add an assets section, like this:
