@@ -23,15 +23,14 @@ class _StreamingNowPageState extends State<StreamingNowPage> {
           Expanded(
             child: Container(
               margin: EdgeInsets.only(top: 20.0),
-              child: FutureBuilder<List<ShowData>>(
-                future: WebsiteAPI.getAllShows(),
+              child: FutureBuilder<ShowData>(
+                future: WebsiteAPI.getBroadcastInfo().then((info) {
+                  return WebsiteAPI.getShowBySlug(info.slug);
+                }),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) print(snapshot.error);
                   if (snapshot.hasData) {
-                    var list = snapshot.data.map((item) {
-                      return ShowPreview(data: item);
-                    }).toList();
-                    return list[0];
+                    return ShowPreview(data: snapshot.data);
                   } else {
                     return Center(child: PlatformCircularIndicator());
                   }
